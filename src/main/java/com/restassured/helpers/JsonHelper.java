@@ -1,8 +1,11 @@
 package com.restassured.helpers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.restassured.constants.ConfigData;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -199,6 +202,109 @@ public class JsonHelper {
             throw new RuntimeException(e);
         }
     }
+
+    // Get value from JSON file with multiple keys
+    public static String getValueJsonObject(String... keys) {
+        String value = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            JsonNode node = objectMapper.readTree(new File(ConfigData.JSON_DATA_FILE_PATH));
+
+            for (String key : keys) {
+                node = node.path(key);
+            }
+
+            value = node.asText();
+            System.out.println("Value: " + value);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+
+    // Get value from JSON file in new file path with multiple keys
+    public static String getValueJsonObject_FilePath(String filePath, String... keys) {
+        String value = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            JsonNode node = objectMapper.readTree(new File(filePath));
+
+            for (String key : keys) {
+                node = node.path(key);
+            }
+
+            value = node.asText();
+            System.out.println("Value: " + value);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+
+    // Get value from JSON array
+    public static String getValueJsonArray(int itemIndex, String... keys) {
+        String value = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            JsonNode rootNode = objectMapper.readTree(new File(ConfigData.JSON_DATA_FILE_PATH));
+
+            // Lấy item tại index từ mảng gốc
+            JsonNode itemNode = rootNode.get(itemIndex);
+            if (itemNode == null || !itemNode.isObject()) {
+                throw new IllegalArgumentException("Item index không hợp lệ hoặc không phải object.");
+            }
+
+            JsonNode current = itemNode;
+            for (String key : keys) {
+                current = current.path(key);
+            }
+
+            value = current.asText();
+            System.out.println("Value: " + value);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+
+    // Get value from JSON array in new file path
+    public static String getValueJsonArray_FilePath(String filePath, int itemIndex, String... keys) {
+        String value = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            JsonNode rootNode = objectMapper.readTree(new File(filePath));
+
+            // Lấy item tại index từ mảng gốc
+            JsonNode itemNode = rootNode.get(itemIndex);
+            if (itemNode == null || !itemNode.isObject()) {
+                throw new IllegalArgumentException("Item index không hợp lệ hoặc không phải object.");
+            }
+
+            JsonNode current = itemNode;
+            for (String key : keys) {
+                current = current.path(key);
+            }
+
+            value = current.asText();
+            System.out.println("Value: " + value);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+
 
 
 }

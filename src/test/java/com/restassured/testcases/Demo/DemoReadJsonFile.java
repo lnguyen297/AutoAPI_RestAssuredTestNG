@@ -1,4 +1,4 @@
-package com.restassured.testcases;
+package com.restassured.testcases.Demo;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;

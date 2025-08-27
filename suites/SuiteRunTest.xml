@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SuiteRunTest" verbose="1">
+    <test name="Demo Allure Report">
+        <classes>
+            <class name="com.restassured.testcases.Demo.CategoryTest_AllureReport"/>
+            <class name="com.restassured.testcases.Demo.BookTest_AllureReport"/>
+        </classes>
+    </test>
+</suite>

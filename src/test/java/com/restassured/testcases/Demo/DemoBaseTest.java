@@ -1,4 +1,4 @@
-package com.restassured.testcases;
+package com.restassured.testcases.Demo;
 
 import com.google.gson.Gson;
 import com.restassured.common.BaseTest;
@@ -9,11 +9,8 @@ import com.restassured.globals.TokenGlobal;
 import com.restassured.model.RegisterUserPOJO_Lombok;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import net.datafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
 
@@ -28,7 +25,7 @@ public class DemoBaseTest extends BaseTest {
         Gson gson = new Gson();
 
         RequestSpecification request = given();
-        request.baseUri(ConfigsGlobal.URI)
+        request.baseUri(ConfigsGlobal.BASE_URI)
                 .accept(ConfigsGlobal.ACCEPT)
                 .contentType(ConfigsGlobal.CONTENT_TYPE)
                 .header("Authorization", "Bearer " + TokenGlobal.TOKEN)

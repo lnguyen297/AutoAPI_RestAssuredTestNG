@@ -1,4 +1,4 @@
-package com.restassured.testcases;
+package com.restassured.testcases.Demo;
 import com.restassured.helpers.PropertiesHelper;
 import org.testng.annotations.Test;
 

@@ -1,4 +1,4 @@
-package com.restassured.testcases;
+package com.restassured.testcases.Demo;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

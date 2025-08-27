@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SuiteRunTest" verbose="1">
+    <test name="Demo Parrallel" parallel="methods" >
+        <classes>
+            <class name="com.restassured.testcases.Demo.BookingTest_Parallel"/>
+        </classes>
+    </test>
+</suite>
