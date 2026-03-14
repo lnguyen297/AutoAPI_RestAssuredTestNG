@@ -246,9 +246,17 @@ public class ApiKeyword {
         Assert.assertEquals(response.getStatusCode(), expectedStatusCode, "FAIL. The status code not match.");
     }
 
+    @Step("Verify Status Code expected: {1}")
+    public static void verifyFailureStatusCode(Response response, int expectedStatusCode) {
+        LogUtils.info("Verify Status code: " + response.getStatusCode() + " # " + expectedStatusCode);
+        AllureManager.saveTextLog("Verify Status code: " + response.getStatusCode() + " # " + expectedStatusCode);
+        Assert.assertNotEquals(response.getStatusCode(), expectedStatusCode, "FAIL. The status code is match.");
+    }
+
     @Step("Verify Keyvalue expected: {1}")
     public static void verifyKeyValue(Response response, String expectedKeyValue, String responseKey) {
-        String actualKeyValue = getResponseKeyValue(response, responseKey);
+        String actualKeyValue = getResponseKeyValue(
+                response, responseKey);
         LogUtils.info("Verify Key Value: " + actualKeyValue + " == " + expectedKeyValue);
         AllureManager.saveTextLog("Verify Status code: " + actualKeyValue + " == " + expectedKeyValue);
         Assert.assertEquals(actualKeyValue, expectedKeyValue, "FAIL. The key value not match.");

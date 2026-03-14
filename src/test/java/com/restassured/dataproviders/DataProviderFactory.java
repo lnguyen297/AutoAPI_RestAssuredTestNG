@@ -15,4 +15,38 @@ public class DataProviderFactory {
                 5
         );
     }
+
+    @DataProvider(name = "registerDataFailure")
+    public Object[][] registerDataSuccessFailure() {
+        ExcelHelper excelHelper = new ExcelHelper();
+        return excelHelper.getDataHashTable(
+                ConfigData.EXCEL_DATA_FILE_PATH,
+                "RegisterUser",
+                6,
+                12
+        );
+    }
+
+    @DataProvider(name = "createCategorySuccess")
+    public Object[][] createCategorySuccess() {
+        ExcelHelper excelHelper = new ExcelHelper();
+        return excelHelper.getDataHashTable(
+                ConfigData.EXCEL_DATA_FILE_PATH,
+                "Category",
+                1,
+                2
+        );
+    }
+
+    @DataProvider(name = "createCategoryFailure")
+    public Object[][] createCategoryFailure() {
+        ExcelHelper excelHelper = new ExcelHelper();
+        return excelHelper.getDataHashTable(
+                ConfigData.EXCEL_DATA_FILE_PATH,
+                "Category",
+                3,
+                3
+        );
+    }
+
 }
